@@ -1,0 +1,3 @@
+INTEGRANTES: Hernan Berrino Malaccorto. Correo: berrinohernan@gmail.com
+Temática del TPE: Tienda de Indumentaria y Accesorios tematica gótica.
+Descripción: Sistema de gestión para un e-commerce de estética gótica. La base de datos modela una relación de 1 a N, donde una categoría genérica (como Ropa, Piercings o Accesorios) puede contener múltiples productos específicos, pero cada producto pertenece a una sola categoría.
