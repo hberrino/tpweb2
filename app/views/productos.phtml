@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo - HBDEV</title>
+</head>
+<body>
+    <h1>Catálogo de HBDEV - Estilo Gótico</h1>
+    
+    <ul>
+        <?php foreach ($productos as $producto): ?>
+            
+            <li>
+                <strong><?= $producto->nombre ?></strong> 
+                - $<?= $producto->precio ?> 
+                <br>
+                <small>Categoría: <?= $producto->categoria_nombre ?></small>
+            </li>
+            <hr>
+
+        <?php endforeach; ?>
+    </ul>
+</body>
+</html>
