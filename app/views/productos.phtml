@@ -8,13 +8,15 @@
     <h1>Catálogo de HBDEV - Estilo Gótico</h1>
     
     <ul>
-        <?php foreach ($productos as $producto): ?>
+    <?php foreach ($productos as $producto): ?>
             
             <li>
                 <strong><?= $producto->nombre ?></strong> 
                 - $<?= $producto->precio ?> 
                 <br>
                 <small>Categoría: <?= $producto->categoria_nombre ?></small>
+                <br>
+                <a href="/tpweb2/productos/ver/<?= $producto->producto_id ?>">Ver detalle completo</a>
             </li>
             <hr>
 

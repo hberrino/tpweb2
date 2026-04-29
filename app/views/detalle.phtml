@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title><?= $producto->nombre ?> - Detalles HBDEV</title>
+</head>
+<body>
+    <a href="/tpweb2/productos">← Volver al catálogo</a>
+
+    <hr>
+
+    <h1><?= $producto->nombre ?></h1>
+    <h3>Categoría: <?= $producto->categoria_nombre ?></h3>
+    
+    <h2>Precio: $<?= $producto->precio ?></h2>
+
+    <button>Comprar accesorio</button>
+</body>
+</html>

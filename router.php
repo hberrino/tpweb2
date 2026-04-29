@@ -8,11 +8,16 @@ switch ($params[0]) {
         echo "Estás en la página principal de la tienda gótica.";
         break;
 
-    case 'productos':
-        require_once 'app/controllers/ProductoController.php';
-        $controller = new ProductoController();
-        $controller->mostrarProductos();
-        break;
+        case 'productos':
+            require_once 'app/controllers/ProductoController.php';
+            $controller = new ProductoController();
+            
+            if (isset($params[1]) && $params[1] === 'ver' && isset($params[2])) {
+                $controller->verProducto($params[2]);
+            } else {
+                $controller->mostrarProductos(); 
+            }
+            break;
 
     case 'categorias':
         if (isset($params[1]) && $params[1] === 'ver' && isset($params[2])) {
