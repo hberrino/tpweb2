@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Categorías - HBDEV</title>
+</head>
+<body>
+
+    <h1>Categorías disponibles</h1>
+
+    <ul>
+        <?php foreach ($categorias as $categoria): ?>
+            <li>
+                <strong><?= $categoria->nombre ?></strong>
+                <br>
+                <a href="/tpweb2/categorias/ver/<?= $categoria->categoria_id ?>">
+                    Ver productos de esta categoría
+                </a>
+            </li>
+            <hr>
+        <?php endforeach; ?>
+    </ul>
+
+    <a href="/tpweb2/productos">← Volver al catálogo</a>
+
+</body>
+</html>

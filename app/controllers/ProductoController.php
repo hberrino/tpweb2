@@ -1,6 +1,7 @@
 <?php
 // app/controllers/ProductoController.php
 require_once 'app/models/ProductoModel.php';
+require_once 'app/models/CategoriaModel.php';
 
 class ProductoController {
     private $model; // entity de Springboot
@@ -16,16 +17,44 @@ class ProductoController {
         require 'app/views/productos.phtml';
     }
     public function verProducto($id) {
-        // Pedimos un solo producto al modelo
+  
         $producto = $this->model->obtenerPorId($id);
 
-        // Si el producto no existe (ej: pusieron un ID que no está en la base), cortamos
         if (!$producto) {
             echo "<h1>Error 404: El producto no existe en el catálogo.</h1>";
             return;
         }
 
-        // Si existe, llamamos a la vista del detalle
         require 'app/views/detalle.phtml';
+    }
+    public function mostrarFormulario() {
+
+        $categoriaModel = new CategoriaModel();
+        $categorias = $categoriaModel->obtenerTodas();
+    
+        require 'app/views/formulario_prod.phtml';
+    }
+    public function guardarProducto() {
+
+        if (empty($_POST['nombre']) || empty($_POST['precio']) || empty($_POST['categoria_id'])) {
+            echo "Faltan datos obligatorios";
+            return;
+        }
+    
+        $nombre = $_POST['nombre'];
+        $precio = $_POST['precio'];
+        $categoria_id = $_POST['categoria_id'];
+    
+        $this->model->insertarProducto($nombre, $precio, $categoria_id);
+    
+        header("Location: /tpweb2/productos");
+        exit;
+    }
+    public function eliminarProducto($id) {
+
+        $this->model->eliminarPorId($id);
+    
+        header("Location: /tpweb2/productos");
+        exit;
     }
 }

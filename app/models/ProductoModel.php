@@ -33,4 +33,32 @@ class ProductoModel extends Model {
         
         return $producto;
     } 
+    public function obtenerPorCategoria($id) {
+        $query = $this->db->prepare(
+            "SELECT p.*, c.nombre AS categoria_nombre 
+             FROM productos p 
+             JOIN categorias c ON p.categoria_id = c.categoria_id
+             WHERE p.categoria_id = :id"
+        );
+    
+        $query->execute(['id' => $id]);
+    
+        $productos = $query->fetchAll(PDO::FETCH_OBJ);
+    
+        return $productos;
+    }
+    public function insertarProducto($nombre, $precio, $categoria_id) {
+
+        $query = $this->db->prepare(
+            "INSERT INTO productos (nombre, precio, categoria_id)
+             VALUES (?, ?, ?)"
+        );
+    
+        $query->execute([$nombre, $precio, $categoria_id]);
+    }
+    public function eliminarPorId($id) {
+
+        $query = $this->db->prepare("DELETE FROM productos WHERE producto_id = ?");
+        $query->execute([$id]);
+    }
 }
