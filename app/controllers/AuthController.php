@@ -21,7 +21,6 @@ class AuthController {
 
         $user = $this->model->obtenerPorEmail($email);
 
-        // PDF: password_verify :contentReference[oaicite:2]{index=2}
         if ($user && password_verify($password, $user->password)) {
 
             session_start();

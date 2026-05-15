@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-05-2026 a las 21:01:06
+-- Tiempo de generación: 15-05-2026 a las 21:27:20
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `categorias` (
   `categoria_id` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `categorias`
@@ -53,7 +53,7 @@ CREATE TABLE `productos` (
   `nombre` varchar(50) NOT NULL,
   `precio` decimal(10,2) NOT NULL,
   `categoria_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `productos`
@@ -63,7 +63,7 @@ INSERT INTO `productos` (`producto_id`, `nombre`, `precio`, `categoria_id`) VALU
 (1, 'Aros estrella', 21000.00, 1),
 (2, 'Pantalon baggy gothstyle unisex', 65000.00, 3),
 (3, 'Pantalon corto baggy gothsyle', 75000.50, 3),
-(4, 'Collar espada corazon ', 12000.00, 1),
+(4, 'Collar espada corazon', 12000.00, 1),
 (5, 'Top mujer gothicstyle', 15000.00, 2),
 (6, 'Remera xxl hombre gothstyle', 20000.00, 2),
 (7, 'Piercing face unidad', 12000.00, 4),
@@ -73,20 +73,20 @@ INSERT INTO `productos` (`producto_id`, `nombre`, `precio`, `categoria_id`) VALU
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `users`
+-- Estructura de tabla para la tabla `usuarios`
 --
 
-CREATE TABLE `users` (
+CREATE TABLE `usuarios` (
   `user_id` int(11) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
--- Volcado de datos para la tabla `users`
+-- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `users` (`user_id`, `email`, `password`) VALUES
+INSERT INTO `usuarios` (`user_id`, `email`, `password`) VALUES
 (1, 'webadmin', '$2y$10$K/ar17e3gGTwikbFqXpkEehv.h4gfJeujtGmBtAr05RpsfAdKfLUC');
 
 --
@@ -107,9 +107,9 @@ ALTER TABLE `productos`
   ADD KEY `fk_producto_categoria` (`categoria_id`);
 
 --
--- Indices de la tabla `users`
+-- Indices de la tabla `usuarios`
 --
-ALTER TABLE `users`
+ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`user_id`);
 
 --
@@ -129,9 +129,9 @@ ALTER TABLE `productos`
   MODIFY `producto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT de la tabla `users`
+-- AUTO_INCREMENT de la tabla `usuarios`
 --
-ALTER TABLE `users`
+ALTER TABLE `usuarios`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
@@ -142,7 +142,7 @@ ALTER TABLE `users`
 -- Filtros para la tabla `productos`
 --
 ALTER TABLE `productos`
-  ADD CONSTRAINT `fk_producto_categoria` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`categoria_id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_producto_categoria` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`categoria_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
