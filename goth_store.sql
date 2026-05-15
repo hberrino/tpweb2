@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-04-2026 a las 19:27:10
+-- Tiempo de generación: 15-05-2026 a las 21:01:06
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -32,6 +32,16 @@ CREATE TABLE `categorias` (
   `nombre` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `categorias`
+--
+
+INSERT INTO `categorias` (`categoria_id`, `nombre`) VALUES
+(1, 'Pendientes'),
+(2, 'Remeras'),
+(3, 'Baggys'),
+(4, 'Piercings');
+
 -- --------------------------------------------------------
 
 --
@@ -44,6 +54,40 @@ CREATE TABLE `productos` (
   `precio` decimal(10,2) NOT NULL,
   `categoria_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `productos`
+--
+
+INSERT INTO `productos` (`producto_id`, `nombre`, `precio`, `categoria_id`) VALUES
+(1, 'Aros estrella', 21000.00, 1),
+(2, 'Pantalon baggy gothstyle unisex', 65000.00, 3),
+(3, 'Pantalon corto baggy gothsyle', 75000.50, 3),
+(4, 'Collar espada corazon ', 12000.00, 1),
+(5, 'Top mujer gothicstyle', 15000.00, 2),
+(6, 'Remera xxl hombre gothstyle', 20000.00, 2),
+(7, 'Piercing face unidad', 12000.00, 4),
+(8, 'Piercing body unidad', 15000.00, 4),
+(10, 'Septum estrella de la muerte', 666.00, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `users`
+--
+
+CREATE TABLE `users` (
+  `user_id` int(11) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`user_id`, `email`, `password`) VALUES
+(1, 'webadmin', '$2y$10$K/ar17e3gGTwikbFqXpkEehv.h4gfJeujtGmBtAr05RpsfAdKfLUC');
 
 --
 -- Índices para tablas volcadas
@@ -63,6 +107,12 @@ ALTER TABLE `productos`
   ADD KEY `fk_producto_categoria` (`categoria_id`);
 
 --
+-- Indices de la tabla `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`user_id`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -70,13 +120,19 @@ ALTER TABLE `productos`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `categoria_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `categoria_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `producto_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `producto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT de la tabla `users`
+--
+ALTER TABLE `users`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas

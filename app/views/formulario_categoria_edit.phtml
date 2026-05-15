@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Editar Categoría</h1>
+
+<form action="/tpweb2/categorias/actualizar" method="POST">
+    <input type="hidden" name="id" value="<?= $categoria->categoria_id ?>">
+
+    <input type="text" name="nombre" value="<?= $categoria->nombre ?>" required>
+    <br><br>
+
+    <button type="submit">Actualizar</button>
+</form>
+
+<a href="/tpweb2/categorias">Volver</a>
+
+</body>
+</html>

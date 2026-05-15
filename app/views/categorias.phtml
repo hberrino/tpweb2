@@ -1,27 +1,52 @@
+<?php if (session_status() != PHP_SESSION_ACTIVE) session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Categorías - HBDEV</title>
+    <title>Categorías</title>
 </head>
 <body>
-
+    <?php if (isset($_SESSION['USER_ID'])): ?>
+        <a href="/tpweb2/logout">Cerrar sesión</a>
+    <?php else: ?>
+        <a href="/tpweb2/login">Login</a>
+    <?php endif; ?>
     <h1>Categorías disponibles</h1>
+    <hr>
+    <?php if (isset($_SESSION['USER_ID'])): ?>
+        <a href="/tpweb2/categorias/crear">Agregar categoría</a>
+        <br><br>
+    <?php endif; ?>
 
     <ul>
         <?php foreach ($categorias as $categoria): ?>
             <li>
                 <strong><?= $categoria->nombre ?></strong>
                 <br>
+
                 <a href="/tpweb2/categorias/ver/<?= $categoria->categoria_id ?>">
                     Ver productos de esta categoría
                 </a>
+
+                <?php if (isset($_SESSION['USER_ID'])): ?>
+                    <br>
+                    <a href="/tpweb2/categorias/editar/<?= $categoria->categoria_id ?>">
+                        Editar
+                    </a>
+                    <br>
+                    <a href="/tpweb2/categorias/eliminar/<?= $categoria->categoria_id ?>"
+                       onclick="return confirm('¿Seguro que querés eliminar esta categoría?');">
+                       Eliminar
+                    </a>
+                <?php endif; ?>
             </li>
+
             <hr>
         <?php endforeach; ?>
     </ul>
 
-    <a href="/tpweb2/productos">← Volver al catálogo</a>
+    <a href="/tpweb2/productos">Volver al catálogo</a>
 
 </body>
 </html>

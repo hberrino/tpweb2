@@ -19,7 +19,7 @@
 <hr>
 <body>
 
-    <h1><?= $titulo ?? 'Catálogo de HBDEV - Estilo Gótico' ?></h1>
+    <h1><?= $titulo ?? 'Catálogo' ?></h1>
 
     <?php if (!empty($esCategoria)): ?>
         <a href="/tpweb2/categorias">Volver a categorías</a>
@@ -30,6 +30,9 @@
     <?php endif; ?>
 
     <hr>
+    <?php if (isset($_SESSION['USER_ID'])): ?>
+    <a href="/tpweb2/productos/crear">Agregar producto</a>
+    <?php endif; ?>
 
     <ul>
         <?php foreach ($productos as $producto): ?>

@@ -14,9 +14,19 @@ class CategoriaController {
         $this->productoModel = new ProductoModel();
     }
 
+    private function checkAuth() {
+        if (session_status() != PHP_SESSION_ACTIVE) {
+            session_start();
+        }
+
+        if (!isset($_SESSION['USER_ID'])) {
+            header("Location: /tpweb2/login");
+            exit;
+        }
+    }
+
     public function mostrarCategorias() {
         $categorias = $this->categoriaModel->obtenerTodas();
-
         require 'app/views/categorias.phtml';
     }
 
@@ -35,5 +45,63 @@ class CategoriaController {
         $esCategoria = true;
 
         require 'app/views/productos.phtml';
+    }
+
+    public function mostrarFormulario() {
+        $this->checkAuth();
+        require 'app/views/formulario_categoria.phtml';
+    }
+
+    public function guardarCategoria() {
+        $this->checkAuth();
+
+        if (empty($_POST['nombre'])) {
+            echo "Falta el nombre";
+            return;
+        }
+
+        $this->categoriaModel->insertarCategoria($_POST['nombre']);
+
+        header("Location: /tpweb2/categorias");
+        exit;
+    }
+
+    public function eliminarCategoria($id) {
+        $this->checkAuth();
+
+        $this->categoriaModel->eliminarPorId($id);
+
+        header("Location: /tpweb2/categorias");
+        exit;
+    }
+
+    public function mostrarFormularioEditar($id) {
+        $this->checkAuth();
+
+        $categoria = $this->categoriaModel->obtenerPorId($id);
+
+        if (!$categoria) {
+            echo "Categoría no encontrada";
+            return;
+        }
+
+        require 'app/views/formulario_categoria_edit.phtml';
+    }
+
+    public function actualizarCategoria() {
+        $this->checkAuth();
+
+        if (empty($_POST['id']) || empty($_POST['nombre'])) {
+            echo "Faltan datos";
+            return;
+        }
+
+        $this->categoriaModel->actualizarCategoria(
+            $_POST['id'],
+            $_POST['nombre']
+        );
+
+        header("Location: /tpweb2/categorias");
+        exit;
     }
 }
