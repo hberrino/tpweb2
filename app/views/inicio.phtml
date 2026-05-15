@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Goth Store</title>
+</head>
+<body>
+
+<h1>Goth Store</h1>
+
+<ul>
+    <li><a href="/tpweb2/productos">Ver productos</a></li>
+    <li><a href="/tpweb2/categorias">Ver categorías</a></li>
+</ul>
+
+<hr>
+
+<?php
+session_start();
+if (isset($_SESSION['USER_ID'])):
+?>
+    <a href="/tpweb2/logout">Cerrar sesión</a>
+<?php else: ?>
+    <a href="/tpweb2/login">Login administrador</a>
+<?php endif; ?>
+
+</body>
+</html>

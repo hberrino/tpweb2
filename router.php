@@ -5,7 +5,7 @@ $params = explode('/', $action);
 switch ($params[0]) {
 
     case 'home':
-        echo "Bienvenido a la tienda gótica.";
+        require 'app/views/inicio.phtml';
         break;
 
     case 'productos':
