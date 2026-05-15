@@ -61,4 +61,14 @@ class ProductoModel extends Model {
         $query = $this->db->prepare("DELETE FROM productos WHERE producto_id = ?");
         $query->execute([$id]);
     }
+    public function actualizarProducto($id, $nombre, $precio, $categoria_id) {
+
+        $query = $this->db->prepare(
+            "UPDATE productos 
+             SET nombre = ?, precio = ?, categoria_id = ?
+             WHERE producto_id = ?"
+        );
+    
+        $query->execute([$nombre, $precio, $categoria_id, $id]);
+    }
 }

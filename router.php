@@ -23,6 +23,11 @@ switch ($params[0]) {
             }
             elseif (isset($params[1]) && $params[1] === 'eliminar' && isset($params[2])) {
                     $controller->eliminarProducto($params[2]);
+            }elseif (isset($params[1]) && $params[1] === 'editar' && isset($params[2])) {
+                $controller->mostrarFormularioEditar($params[2]);
+            
+            } elseif (isset($params[1]) && $params[1] === 'actualizar') {
+                $controller->actualizarProducto();
             } else {
                 $controller->mostrarProductos(); 
             }
