@@ -1,9 +1,22 @@
+<?php if (session_status() != PHP_SESSION_ACTIVE) session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Catálogo - HBDEV</title>
+    <title>Catálogo</title>
 </head>
+<?php if (session_status() != PHP_SESSION_ACTIVE) session_start(); ?>
+
+<div>
+    <?php if (isset($_SESSION['USER_ID'])): ?>
+        <a href="/tpweb2/logout">Cerrar sesión</a>
+    <?php else: ?>
+        <a href="/tpweb2/login">Login</a>
+    <?php endif; ?>
+</div>
+
+<hr>
 <body>
 
     <h1><?= $titulo ?? 'Catálogo de HBDEV - Estilo Gótico' ?></h1>
@@ -33,17 +46,21 @@
                 </a>
                 <br>
 
-                <a href="/tpweb2/productos/editar/<?= $producto->producto_id ?>">
-                    Editar
-                </a>
-                <br>
+                <?php if (isset($_SESSION['USER_ID'])): ?>
+                    
+                    <a href="/tpweb2/productos/editar/<?= $producto->producto_id ?>">
+                        Editar
+                    </a>
+                    <br>
 
-                <a href="/tpweb2/productos/eliminar/<?= $producto->producto_id ?>"
-                   onclick="return confirm('¿Seguro que querés eliminar este producto?');">
-                   Eliminar
-                </a>
+                    <a href="/tpweb2/productos/eliminar/<?= $producto->producto_id ?>"
+                       onclick="return confirm('¿Seguro que querés eliminar este producto?');">
+                       Eliminar
+                    </a>
+
+                <?php endif; ?>
+
             </li>
-
             <hr>
         <?php endforeach; ?>
     </ul>

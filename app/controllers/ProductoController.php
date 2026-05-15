@@ -28,6 +28,7 @@ class ProductoController {
         require 'app/views/detalle.phtml';
     }
     public function mostrarFormulario() {
+        $this->checkAuth();
 
         $categoriaModel = new CategoriaModel();
         $categorias = $categoriaModel->obtenerTodas();
@@ -35,6 +36,7 @@ class ProductoController {
         require 'app/views/formulario_prod.phtml';
     }
     public function guardarProducto() {
+        $this->checkAuth();
 
         if (empty($_POST['nombre']) || empty($_POST['precio']) || empty($_POST['categoria_id'])) {
             echo "Faltan datos obligatorios";
@@ -51,6 +53,7 @@ class ProductoController {
         exit;
     }
     public function eliminarProducto($id) {
+        $this->checkAuth();
 
         $this->model->eliminarPorId($id);
     
@@ -58,6 +61,7 @@ class ProductoController {
         exit;
     }
     public function mostrarFormularioEditar($id) {
+        $this->checkAuth();
 
         $producto = $this->model->obtenerPorId($id);
     
@@ -72,6 +76,7 @@ class ProductoController {
         require 'app/views/formulario_prod_edit.phtml';
     }
     public function actualizarProducto() {
+        $this->checkAuth();
 
         if (empty($_POST['id']) || empty($_POST['nombre']) || empty($_POST['precio']) || empty($_POST['categoria_id'])) {
             echo "Faltan datos";
@@ -87,5 +92,13 @@ class ProductoController {
     
         header("Location: /tpweb2/productos");
         exit;
+    }
+    private function checkAuth() {
+        session_start();
+    
+        if (!isset($_SESSION['USER_ID'])) {
+            header("Location: /tpweb2/login");
+            exit;
+        }
     }
 }

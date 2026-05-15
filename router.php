@@ -5,7 +5,7 @@ $params = explode('/', $action);
 switch ($params[0]) {
     
     case 'home':
-        echo "Estás en la página principal de la tienda gótica.";
+        echo "Bienvenido a la tienda gótica.";
         break;
 
         case 'productos':
@@ -43,7 +43,25 @@ switch ($params[0]) {
                     $controller->mostrarCategorias();
                 }
                 break;
+                
+                case 'login':
+                    require_once 'app/controllers/AuthController.php';
+                    $controller = new AuthController();
+                    $controller->mostrarLogin();
+                    break;
+                
+                case 'auth':
+                    require_once 'app/controllers/AuthController.php';
+                    $controller = new AuthController();
+                    $controller->login();
+                    break;
+                
+                case 'logout':
+                    require_once 'app/controllers/AuthController.php';
+                    $controller = new AuthController();
+                    $controller->logout();
+                    break;
     default:
-        echo "404 - Página no encontrada en el abismo gótico.";
+        echo "404 - Página no encontrada.";
         break;
 }
