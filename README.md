@@ -1,9 +1,6 @@
 INTEGRANTES: Hernan Berrino Malaccorto. Correo: berrinohernan@gmail.com
 Temática del TPE: Tienda de Indumentaria y Accesorios tematica gótica.
 Descripción: Sistema de gestión para un e-commerce de estética gótica. La base de datos modela una relación de 1 a N, donde una categoría genérica (como Ropa, Piercings o Accesorios) puede contener múltiples productos específicos, pero cada producto pertenece a una sola categoría.
----
-
-## Estructura del Proyecto
 
 El proyecto está desarrollado en PHP siguiendo una arquitectura tipo MVC (Modelo, Vista, Controlador).
 
@@ -20,20 +17,14 @@ El enrutamiento se realiza mediante `.htaccess`, permitiendo el uso de URLs sem�
 
 ---
 
-## Requisitos
-
-Para ejecutar el proyecto se necesita:
+Para ejecutar el proyecto:
 
 - XAMPP (Apache y MySQL)
 - PHP 8 o superior
 - Navegador web
 
----
-
-## Instalación y ejecución
-
 1. Clonar el repositorio:
-   git clone <url-del-repo>
+   git clone https://github.com/hberrino/tpweb2/
 
 2. Copiar la carpeta del proyecto dentro de:
    C:\xampp\htdocs\
@@ -42,7 +33,10 @@ Para ejecutar el proyecto se necesita:
    - Apache
    - MySQL
 
-4. Acceder desde el navegador:
+4. Importar DB:
+   - Importar goth_store.sql desde http://localhost/phpmyadmin/
+
+5. Acceder desde el navegador:
    http://localhost/tpweb2
 
 ---
