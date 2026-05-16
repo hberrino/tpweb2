@@ -26,6 +26,11 @@ SET time_zone = "+00:00";
 --
 -- Estructura de tabla para la tabla `categorias`
 --
+CREATE DATABASE IF NOT EXISTS goth_store
+DEFAULT CHARACTER SET utf8mb4
+COLLATE utf8mb4_spanish_ci;
+
+USE goth_store;
 
 CREATE TABLE `categorias` (
   `categoria_id` int(11) NOT NULL,
