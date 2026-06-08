@@ -8,7 +8,7 @@
 
     <h1>Agregar nuevo producto</h1>
 
-    <form action="/tpweb2/productos/guardar" method="POST">
+    <form action="<?= BASE_URL ?>productos/guardar" method="POST">
 
         <label>Nombre:</label><br>
         <input type="text" name="nombre" required>
@@ -32,7 +32,7 @@
     </form>
 
     <br>
-    <a href="/tpweb2/productos">Volver al catálogo</a>
+    <a href="<?= BASE_URL ?>productos">Volver al catálogo</a>
 
 </body>
 </html>

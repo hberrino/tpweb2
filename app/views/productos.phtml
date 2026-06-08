@@ -10,28 +10,28 @@
 
 <div>
     <?php if (isset($_SESSION['USER_ID'])): ?>
-        <a href="/tpweb2/logout">Cerrar sesión</a>
+        <a href="<?= BASE_URL ?>logout">Cerrar sesión</a>
     <?php else: ?>
-        <a href="/tpweb2/login">Login</a>
+        <a href="<?= BASE_URL ?>login">Login</a>
     <?php endif; ?>
 </div>
 
 <hr>
 <body>
 
-    <h1><?= $titulo ?? 'Catálogo' ?></h1>
+    <h1><?= $titulo ?></h1>
 
-    <?php if (!empty($esCategoria)): ?>
-        <a href="/tpweb2/categorias">Volver a categorías</a>
+    <?php if ($vieneDeCategoria): ?>
+        <a href="<?= BASE_URL ?>categorias">Volver a categorías</a>
         <br>
-        <a href="/tpweb2/productos">Volver al catálogo</a>
+        <a href="<?= BASE_URL ?>productos">Volver al catálogo</a>
     <?php else: ?>
-        <a href="/tpweb2/categorias">Ver por categorías</a>
+        <a href="<?= BASE_URL ?>categorias">Ver por categorías</a>
     <?php endif; ?>
 
     <hr>
     <?php if (isset($_SESSION['USER_ID'])): ?>
-    <a href="/tpweb2/productos/crear">Agregar producto</a>
+    <a href="<?= BASE_URL ?>productos/crear">Agregar producto</a>
     <?php endif; ?>
 
     <ul>
@@ -44,19 +44,19 @@
                 <small>Categoría: <?= $producto->categoria_nombre ?></small>
                 <br>
 
-                <a href="/tpweb2/productos/ver/<?= $producto->producto_id ?>">
+                <a href="<?= BASE_URL ?>productos/ver/<?= $producto->producto_id ?>">
                     Ver detalle completo
                 </a>
                 <br>
 
                 <?php if (isset($_SESSION['USER_ID'])): ?>
                     
-                    <a href="/tpweb2/productos/editar/<?= $producto->producto_id ?>">
+                    <a href="<?= BASE_URL ?>productos/editar/<?= $producto->producto_id ?>">
                         Editar
                     </a>
                     <br>
 
-                    <a href="/tpweb2/productos/eliminar/<?= $producto->producto_id ?>"
+                    <a href="<?= BASE_URL ?>productos/eliminar/<?= $producto->producto_id ?>"
                        onclick="return confirm('¿Seguro que querés eliminar este producto?');">
                        Eliminar
                     </a>

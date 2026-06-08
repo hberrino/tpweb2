@@ -8,14 +8,14 @@
 </head>
 <body>
     <?php if (isset($_SESSION['USER_ID'])): ?>
-        <a href="/tpweb2/logout">Cerrar sesión</a>
+        <a href="<?= BASE_URL ?>logout">Cerrar sesión</a>
     <?php else: ?>
-        <a href="/tpweb2/login">Login</a>
+        <a href="<?= BASE_URL ?>login">Login</a>
     <?php endif; ?>
     <h1>Categorías disponibles</h1>
     <hr>
     <?php if (isset($_SESSION['USER_ID'])): ?>
-        <a href="/tpweb2/categorias/crear">Agregar categoría</a>
+        <a href="<?= BASE_URL ?>categorias/crear">Agregar categoría</a>
         <br><br>
     <?php endif; ?>
 
@@ -25,17 +25,17 @@
                 <strong><?= $categoria->nombre ?></strong>
                 <br>
 
-                <a href="/tpweb2/categorias/ver/<?= $categoria->categoria_id ?>">
+                <a href="<?= BASE_URL ?>categorias/ver/<?= $categoria->categoria_id ?>">
                     Ver productos de esta categoría
                 </a>
 
                 <?php if (isset($_SESSION['USER_ID'])): ?>
                     <br>
-                    <a href="/tpweb2/categorias/editar/<?= $categoria->categoria_id ?>">
+                    <a href="<?= BASE_URL ?>categorias/editar/<?= $categoria->categoria_id ?>">
                         Editar
                     </a>
                     <br>
-                    <a href="/tpweb2/categorias/eliminar/<?= $categoria->categoria_id ?>"
+                    <a href="<?= BASE_URL ?>categorias/eliminar/<?= $categoria->categoria_id ?>"
                        onclick="return confirm('¿Seguro que querés eliminar esta categoría?');">
                        Eliminar
                     </a>
@@ -46,7 +46,7 @@
         <?php endforeach; ?>
     </ul>
 
-    <a href="/tpweb2/productos">Volver al catálogo</a>
+    <a href="<?= BASE_URL ?>productos">Volver al catálogo</a>
 
 </body>
 </html>

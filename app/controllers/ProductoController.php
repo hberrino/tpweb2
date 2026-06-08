@@ -13,6 +13,8 @@ class ProductoController {
     public function mostrarProductos() {
 
         $productos = $this->model->obtenerTodos();
+        $titulo = 'Catálogo';
+        $vieneDeCategoria = false;
 
         require 'app/views/productos.phtml';
     }
@@ -49,7 +51,7 @@ class ProductoController {
     
         $this->model->insertarProducto($nombre, $precio, $categoria_id);
     
-        header("Location: /tpweb2/productos");
+        header("Location: " . BASE_URL . "productos");
         exit;
     }
     public function eliminarProducto($id) {
@@ -57,7 +59,7 @@ class ProductoController {
 
         $this->model->eliminarPorId($id);
     
-        header("Location: /tpweb2/productos");
+        header("Location: " . BASE_URL . "productos");
         exit;
     }
     public function mostrarFormularioEditar($id) {
@@ -90,14 +92,14 @@ class ProductoController {
     
         $this->model->actualizarProducto($id, $nombre, $precio, $categoria_id);
     
-        header("Location: /tpweb2/productos");
+        header("Location: " . BASE_URL . "productos");
         exit;
     }
     private function checkAuth() {
         session_start();
     
         if (!isset($_SESSION['USER_ID'])) {
-            header("Location: /tpweb2/login");
+            header("Location: " . BASE_URL . "login");
             exit;
         }
     }

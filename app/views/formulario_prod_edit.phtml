@@ -8,7 +8,7 @@
 
 <h1>Editar producto</h1>
 
-<form action="/tpweb2/productos/actualizar" method="POST">
+<form action="<?= BASE_URL ?>productos/actualizar" method="POST">
 
     <input type="hidden" name="id" value="<?= $producto->producto_id ?>">
 
@@ -36,7 +36,7 @@
 </form>
 
 <br>
-<a href="/tpweb2/productos">Volver al catálogo</a>
+<a href="<?= BASE_URL ?>productos">Volver al catálogo</a>
 
 </body>
 </html>

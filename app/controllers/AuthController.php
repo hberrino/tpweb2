@@ -26,7 +26,7 @@ class AuthController {
             session_start();
             $_SESSION['USER_ID'] = $user->user_id;
 
-            header("Location: /tpweb2/productos");
+            header("Location: " . BASE_URL . "productos");
             exit;
 
         } else {
@@ -39,7 +39,7 @@ class AuthController {
         session_start();
         session_destroy();
 
-        header("Location: /tpweb2/login");
+        header("Location: " . BASE_URL . "login");
         exit;
     }
 }

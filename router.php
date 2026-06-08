@@ -1,5 +1,11 @@
 <?php
 
+$action = trim($action ?? 'home', '/');
+
+if ($action === '') {
+    $action = 'home';
+}
+
 $params = explode('/', $action);
 
 switch ($params[0]) {

@@ -15,6 +15,8 @@ El enrutamiento se realiza mediante `.htaccess`, permitiendo el uso de URLs sem√
 - /categorias
 - /categorias/ver/{id}
 
+Las URLs del sistema se arman con la constante BASE_URL definida en config.php. Por eso el proyecto puede estar dentro de una subcarpeta de htdocs sin depender de que la carpeta se llame exactamente tpweb2.
+
 ---
 
 Para ejecutar el proyecto:
@@ -29,6 +31,10 @@ Para ejecutar el proyecto:
 2. Copiar la carpeta del proyecto dentro de:
    C:\xampp\htdocs\
 
+   La carpeta puede llamarse tpweb2 u otro nombre, por ejemplo:
+   C:\xampp\htdocs\tpweb2
+   C:\xampp\htdocs\pruebaweb2
+
 3. Iniciar XAMPP:
    - Apache
    - MySQL
@@ -37,7 +43,11 @@ Para ejecutar el proyecto:
    - Importar goth_store.sql desde http://localhost/phpmyadmin/
 
 5. Acceder desde el navegador:
+   http://localhost/nombre-de-la-carpeta
+
+   Ejemplos:
    http://localhost/tpweb2
+   http://localhost/pruebaweb2
 
 ---
 
@@ -62,7 +72,7 @@ Usuario: webadmin
 Contrase√±a: admin  
 
 Login:
-http://localhost/tpweb2/login
+http://localhost/nombre-de-la-carpeta/login
 
 ---
 

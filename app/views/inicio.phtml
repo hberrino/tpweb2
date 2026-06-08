@@ -9,8 +9,8 @@
 <h1>Goth Store</h1>
 
 <ul>
-    <li><a href="/tpweb2/productos">Ver productos</a></li>
-    <li><a href="/tpweb2/categorias">Ver categorías</a></li>
+    <li><a href="<?= BASE_URL ?>productos">Ver productos</a></li>
+    <li><a href="<?= BASE_URL ?>categorias">Ver categorías</a></li>
 </ul>
 
 <hr>
@@ -19,9 +19,9 @@
 session_start();
 if (isset($_SESSION['USER_ID'])):
 ?>
-    <a href="/tpweb2/logout">Cerrar sesión</a>
+    <a href="<?= BASE_URL ?>logout">Cerrar sesión</a>
 <?php else: ?>
-    <a href="/tpweb2/login">Login administrador</a>
+    <a href="<?= BASE_URL ?>login">Login administrador</a>
 <?php endif; ?>
 
 </body>

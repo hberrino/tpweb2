@@ -20,7 +20,7 @@ class CategoriaController {
         }
 
         if (!isset($_SESSION['USER_ID'])) {
-            header("Location: /tpweb2/login");
+            header("Location: " . BASE_URL . "login");
             exit;
         }
     }
@@ -42,7 +42,7 @@ class CategoriaController {
         $productos = $this->productoModel->obtenerPorCategoria($id);
 
         $titulo = "Productos de la categoría: " . $categoria->nombre;
-        $esCategoria = true;
+        $vieneDeCategoria = true;
 
         require 'app/views/productos.phtml';
     }
@@ -62,7 +62,7 @@ class CategoriaController {
 
         $this->categoriaModel->insertarCategoria($_POST['nombre']);
 
-        header("Location: /tpweb2/categorias");
+        header("Location: " . BASE_URL . "categorias");
         exit;
     }
 
@@ -71,7 +71,7 @@ class CategoriaController {
 
         $this->categoriaModel->eliminarPorId($id);
 
-        header("Location: /tpweb2/categorias");
+        header("Location: " . BASE_URL . "categorias");
         exit;
     }
 
@@ -101,7 +101,7 @@ class CategoriaController {
             $_POST['nombre']
         );
 
-        header("Location: /tpweb2/categorias");
+        header("Location: " . BASE_URL . "categorias");
         exit;
     }
 }
